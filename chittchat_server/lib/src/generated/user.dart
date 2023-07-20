@@ -8,39 +8,26 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 
-class Example extends _i1.SerializableEntity {
-  Example({
-    required this.name,
-    required this.data,
-  });
+class User extends _i1.SerializableEntity {
+  User({required this.id});
 
-  factory Example.fromJson(
+  factory User.fromJson(
     Map<String, dynamic> jsonSerialization,
     _i1.SerializationManager serializationManager,
   ) {
-    return Example(
-      name: serializationManager.deserialize<String>(jsonSerialization['name']),
-      data: serializationManager.deserialize<int>(jsonSerialization['data']),
-    );
+    return User(
+        id: serializationManager.deserialize<String>(jsonSerialization['id']));
   }
 
-  String name;
-
-  int data;
+  String id;
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'data': data,
-    };
+    return {'id': id};
   }
 
   @override
   Map<String, dynamic> allToJson() {
-    return {
-      'name': name,
-      'data': data,
-    };
+    return {'id': id};
   }
 }
